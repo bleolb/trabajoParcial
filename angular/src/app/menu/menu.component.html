@@ -1,0 +1,17 @@
+<body class="fondo">
+    <h1>Usuarios registrados</h1>
+    <table class="table">
+        <tbody>
+            <tr *ngFor="let item of user">
+                <td>{{item.nombre}}</td><br>
+                <td>{{item.apellido}}</td><br>
+                <td>{{item.email}}</td><br>
+                <td>{{item.edad}}</td><br>
+                <td>
+                    <button class="btn" (click)="editar(item)">Editar</button>
+                    <button class="btn" (click)="deleteuser(item._id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
