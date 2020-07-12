@@ -24,6 +24,32 @@ export class EditPonenciasComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.createuserForm = this.formBuilder.group({
+      titulo:["",Validators.required],
+      area:["",Validators.required],
+      resumen:["",Validators.required],
+  });
   }
-
+  createponencias(){
+    let titulo =this.createuserForm.get('titulo').value;
+    let area =this.createuserForm.get('area').value;
+    let resumen =this.createuserForm.get('resumen').value;
+     if(this.createuserForm.invalid){
+      alert ('llene los campos')
+    }else{
+      let Data = {
+        data:{
+          titulo,
+          area,
+          resumen,
+        }
+      };
+     let user= this.usuarioService.put(
+      'update_ponencia',this.ponencias._id,Data);
+      if (user) {
+        this.router.navigate(['/verponencias']);
+        localStorage.clear();
+      }
+    }
+  }
 }

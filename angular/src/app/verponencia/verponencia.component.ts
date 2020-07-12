@@ -35,12 +35,12 @@ export class VerponenciaComponent implements OnInit {
   }
   public edit(ponencia): void {
     sessionStorage.setItem('ponencias', JSON.stringify(ponencia));
-    this.router.navigate(['/edit`ponencias']);
+    this.router.navigate(['/editarponencias']);
   }
   deleteponencias(_id) {
     this.usuarioServic.delete('delete_ponencia', _id);
           this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-          this.router.navigate(['/verponencia']);
+          this.router.navigate(['/verponencias']);
         });
       }
 }

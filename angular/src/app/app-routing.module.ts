@@ -7,6 +7,10 @@ import { CongresosComponent } from './congresos/congresos.component'
 import { VercongresoComponent } from './vercongreso/vercongreso.component'
 import { EditcongresosComponent } from './editcongresos/editcongresos.component'
 import { VerponenciaComponent } from './verponencia/verponencia.component'
+import { EditPonenciasComponent } from './edit-ponencias/edit-ponencias.component'
+import { PonenciasComponent } from './ponencias/ponencias.component'
+
+
 const routes: Routes = [
     {path:'',redirectTo: '/login', pathMatch: 'full'},
     {path: 'login',component: LoginComponent},
@@ -15,7 +19,13 @@ const routes: Routes = [
     {path: 'congresos',component: CongresosComponent},
     {path: 'vercongreso', component: VercongresoComponent},
     {path: 'editcongresos', component: EditcongresosComponent},
-    {path: 'editponencias', component: VerponenciaComponent},
+    {path: 'verponencias', component: VerponenciaComponent},
+    {path: 'editarponencias', component: EditPonenciasComponent},
+    {path: 'crearponencias', component: PonenciasComponent},
+    
+
+
+
     
     {
         path: 'menu',loadChildren:()=>
