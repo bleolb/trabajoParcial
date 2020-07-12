@@ -1,13 +1,11 @@
-
 import { Component, OnInit } from '@angular/core';
-
-import { HttpClient } from '@angular/common/http'
-import { Router } from '@angular/router';
-import { environment} from '../../environments/environment'
+import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-
-const loginapi= environment.API_URL+ '/login';;
+import { Router } from '@angular/router';
+import { PermisosService } from '../servicios/permisos.service'
+import { Datarx } from '../modelos/datarx'
+import { LoginService } from '../servicios/login.service'
+// import { read } from 'fs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,44 +13,56 @@ const loginapi= environment.API_URL+ '/login';;
 })
 
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
-  
-  constructor(private formBuilder: FormBuilder,private http: HttpClient,private router: Router) { }
+  loginData: FormGroup;
+  constructor(private router: Router,
+    private loginServices:LoginService,
+    private permisos: PermisosService,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
+    this.loginData = this.formBuilder.group({
       email:["",Validators.required],
-      passw:["",Validators.required],
+      password:["",Validators.required],
   }); 
   }
 
-
-  into(){
-   let email =this.loginForm.get('email').value;
-   let password =this.loginForm.get('passw').value;
-   console.log(password)
-   if(this.loginForm.invalid){
-   alert('datos requeridos')
-   console.log('datos requeridos')
-   }else{
-     let loginData = {
-       data:{
-         email,
-         password,
-       }
-     };
-     this.http.post(loginapi,loginData).subscribe(data=>{
-     console.log(Object.values(data))
-     let  token=(Object.values(data))
-     sessionStorage.setItem('token1', JSON.stringify(token) );
-     console.log(token.length)
-     if(token.length===1){
-       this.router.navigate(['menu'])
-     }else{
-      window.location.reload();
-     }
-    })
+login():void{
+  let email =this.loginData.get('email').value;
+  let password =this.loginData.get('password').value;
+  let datalogin = {
+    data:{
+      password,
+      email
     }
-  }
-   
+  };
+    this.loginServices.login(datalogin).subscribe((data:Datarx)=>{
+  if(data.transaccion){
+    if(this.permisos.decodificarToken(data.token)){
+      sessionStorage.setItem('rol', JSON.stringify(data.data));
+      this.router.navigate(['/home']);
+    }else{
+     email='';
+      password='';
+      const Toast = Swal.fire({
+        position: 'top-right',
+        icon:'error',
+        title:`${data.msg}`,
+        showConfirmButton: false,
+        timer: 3000
+      });
+    }
+  } error=>{
+    email='';
+      password='';
+    const Toast = Swal.fire({
+      position: 'top-right',
+      icon:'error',
+      title:`${error}`,
+      showConfirmButton: false,
+      timer: 3000
+    });
+  };
+});
+}
+  
 }

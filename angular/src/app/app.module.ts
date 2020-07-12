@@ -1,42 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { SocketIoModule } from 'ngx-socket-io';
-
+import {FormsModule,ReactiveFormsModule} from '@angular/forms'
+import { LoginComponent } from './login/login.component'
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import {appRoutingModule} from './app-routing.module';
 import { RouterModule } from '@angular/router';
-import { EditarComponent } from './editar/editar.component';
-import { Editar1Component} from './editar1/editar1.component';
-
-
-
-//const config:SocketIoConfig={url:'http://localhost:27017',options:{}}
+import { EdituserComponent } from './edituser/edituser.component';
+import { MenuComponent } from './menu/menu.component';
+import { CongresosComponent } from './congresos/congresos.component';
 @NgModule({
   declarations: [
     AppComponent,
-    //DocumentosComponent,
-    //ListaDocumentosComponent,
     LoginComponent,
-    EditarComponent,
-    Editar1Component
-    
+    EdituserComponent,
+    MenuComponent,
+    CongresosComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    //SocketIoModule.forRoot(config)
-    SocketIoModule,
-    BrowserAnimationsModule,
     ReactiveFormsModule,
+    SocketIoModule,
+    appRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     RouterModule,
-    HttpClientModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
