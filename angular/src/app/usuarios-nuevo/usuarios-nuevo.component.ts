@@ -81,8 +81,7 @@ createuser(){
           edad,
           email,
           passw,
-          rol: 'cliente',
-        },
+          },
       };
       let user = this.userService.post('insertusuario',datos)
        if (user) {
