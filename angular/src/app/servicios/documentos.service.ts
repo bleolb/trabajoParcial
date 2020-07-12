@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {SocketJWTService} from '../servicios/socket-jwt.service';
 import {Documentos} from '../modelos/documentos';
-import Swal from 'sweetalert2';
+
 
 
 @Injectable({
@@ -19,13 +19,7 @@ export class DocumentosService {
   if(this.socket.ioSocket.connected){
     this.socket.emit('getDoc',id);
   }else{
-    const Toast = Swal.fire({
-      position: 'center',
-      icon:'error',
-      title:'Sin coneccion',
-      showConfirmButton: false,
-      timer: 3000
-    });
+    alert('no conectado')
   }
   }
 
