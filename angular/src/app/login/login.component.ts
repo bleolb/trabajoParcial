@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { PermisosService } from '../servicios/permisos.service'
 import { Datarx } from '../modelos/datarx'
 import { LoginService } from '../servicios/login.service'
-// import { read } from 'fs';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

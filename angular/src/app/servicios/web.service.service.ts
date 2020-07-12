@@ -29,10 +29,11 @@ export class WebServiceService {
   getHeaderFile(): object {
     const optionsHeaders = {
       headers: new HttpHeaders({
-        'Content-Type': 'multipart/form-data',
-        Authorization: this.permissions.obtenerToken(),
+     
+      Authorization: this.permissions.obtenerToken(),
+      
       }),
-    };
+    };console.log(this.permissions.obtenerToken())
     return optionsHeaders;
   }
 }

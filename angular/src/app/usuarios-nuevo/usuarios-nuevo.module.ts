@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms'
-
 import { UsuariosNuevoRoutingModule } from './usuarios-nuevo-routing.module';
 import { UsuariosNuevoComponent } from './usuarios-nuevo.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -12,8 +12,9 @@ import { UsuariosNuevoComponent } from './usuarios-nuevo.component';
   imports: [
     CommonModule,
     UsuariosNuevoRoutingModule,
-     ReactiveFormsModule,
-    FormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    NgxSpinnerModule
   ]
 })
 export class UsuariosNuevoModule { }
