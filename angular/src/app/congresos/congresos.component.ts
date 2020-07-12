@@ -22,14 +22,14 @@ export class CongresosComponent implements OnInit {
       nombre: ['', [Validators.required]],
       congresos: ['', [Validators.required]],
       tema: ['', [Validators.required]],
-      passw: ['', [Validators.required]],
+     
     });
   }
   createcongress(){   
     let nombre =this.createuserForm.get('nombre').value;
     let congresos =this.createuserForm.get('congresos').value;
     let tema =this.createuserForm.get('tema').value;
-    let passw =this.createuserForm.get('passw').value;
+    
      if (this.createuserForm.invalid) {
         alert ('llene todos los campos')
       } else {
@@ -38,13 +38,11 @@ export class CongresosComponent implements OnInit {
             nombre,
             congresos,
             tema,
-            passw,
-            rol: 'cliente',
-          },
+            },
         };
-        let user = this.userService.post('insertcongreso',datos)
+        let user = this.userService.post('create_congreso',datos)
          if (user) {
-          this.router.navigate(['/menu']);
+          this.router.navigate(['/vercongreso']);
         }
       }
     };

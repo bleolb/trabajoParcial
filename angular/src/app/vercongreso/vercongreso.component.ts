@@ -4,50 +4,47 @@ import { Router,NavigationEnd} from '@angular/router';
 import { WebServiceService } from '../servicios/web.service.service';
 import { UsuarioService } from '../servicios/usuario.service'
 
-
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss'],
+  selector: 'app-vercongreso',
+  templateUrl: './vercongreso.component.html',
+  styleUrls: ['./vercongreso.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class VercongresoComponent implements OnInit {
   navigationSubcription;
-  user=[];
+  congress=[];
   private url: string;
   constructor(
     private http: HttpClient,
     private router: Router,
     private servidor: WebServiceService,
     private usuarioServic:UsuarioService) {
-      this.url=servidor.getUrl();
+    this.url=servidor.getUrl();
  
    }
 
-   ngOnInit(): void {
-    this.getUsers();
-  }
 
-  getUsers(): void {
+  ngOnInit(): void {
+    this.getCongress();
+  }
+  getCongress(): void {
     this.http
-      .get(`${this.url}get_usuarios`, this.servidor.getHeaders())
+      .get(`${this.url}congreso`, this.servidor.getHeaders())
       .subscribe((data: any) => {
         console.log(data)
         data.data.forEach((element) => {
-          this.user.push(element);
+          this.congress.push(element);
         });
       });
   }
-  public edit(user): void {
-    sessionStorage.setItem('user', JSON.stringify(user));
-    this.router.navigate(['/edit']);
+  public edit(congress): void {
+    sessionStorage.setItem('congress', JSON.stringify(congress));
+    this.router.navigate(['/editcongresos']);
   }
-
-  deleteuser(_id) {
-    this.usuarioServic.delete('usuario_delete', _id);
+  deletecongress(_id) {
+    this.usuarioServic.delete('delete_congreso', _id);
   
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-          this.router.navigate(['/menu']);
+          this.router.navigate(['/vercongreso']);
         });
-  }
-
+  } 
 }

@@ -1,0 +1,10 @@
+<form [formGroup]="createuserForm" class="form">
+    <h2>Registrar Ponencia</h2>
+    <span>titulo</span>
+    <p><input formControlName='titulo' name="titulo" [(ngModel)]="ponencias.ponencias" placeholder="nombre"></p>
+    <span>Congresos</span>
+    <p><input formControlName='area' name="area" [(ngModel)]="ponencias.area" placeholder="area"></p>
+    <span>Tema</span>
+    <p><input formControlName='resumen' name="resumen" [(ngModel)]="ponencias.resumen"  placeholder="resumen"></p>
+    <!-- <button (click)="createcongress()">Guardar</button> -->
+</form>

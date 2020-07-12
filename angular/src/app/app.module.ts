@@ -10,6 +10,11 @@ import { RouterModule } from '@angular/router';
 import { EdituserComponent } from './edituser/edituser.component';
 import { MenuComponent } from './menu/menu.component';
 import { CongresosComponent } from './congresos/congresos.component';
+import { VercongresoComponent } from './vercongreso/vercongreso.component';
+import { EditcongresosComponent } from './editcongresos/editcongresos.component';
+import { VerponenciaComponent } from './verponencia/verponencia.component';
+import { EditPonenciasComponent } from './edit-ponencias/edit-ponencias.component';
+import { PonenciasComponent } from './ponencias/ponencias.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +22,11 @@ import { CongresosComponent } from './congresos/congresos.component';
     EdituserComponent,
     MenuComponent,
     CongresosComponent,
+    VercongresoComponent,
+    EditcongresosComponent,
+    VerponenciaComponent,
+    EditPonenciasComponent,
+    PonenciasComponent,
   ],
   imports: [
     BrowserModule,

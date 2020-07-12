@@ -12,6 +12,7 @@ let app = express(),
     session = require('express-session'),
     usuarioRuta = require('../rutas/usuarios.rutas.js'),
     congresoRuta = require('../rutas/congreso.rutas'),
+    ponenciaRuta = require('../rutas/ponencias.rutas'),
     db = connectDb();
     sess = {
         secret: process.env.KEY_SESSION,
@@ -52,5 +53,6 @@ app.use((req, res, next) => {
 
 app.use('/api', usuarioRuta)
 app.use('/api', congresoRuta)
+app.use('/api', ponenciaRuta)
 
 module.exports = app

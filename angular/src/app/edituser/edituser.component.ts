@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
 import { HttpClient } from '@angular/common/http'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router,} from '@angular/router';
 import { UsuarioService } from '../servicios/usuario.service';
-// const updateuser = environment.API_URL+ '/update/';
 @Component({
   selector: 'app-edituser',
   templateUrl: './edituser.component.html',
@@ -38,13 +36,7 @@ userForm: FormGroup;
     let edad =this.userForm.get('edad').value;
     let email =this.userForm.get('email').value;
     if(this.userForm.invalid){
-      const Toast = Swal.fire({
-        position: 'top-right',
-        icon:'error',
-        title:'Datos Requeridos',
-        showConfirmButton: false,
-        timer: 3000
-      });
+      alert ('llene los campos')
     }else{
       let Data = {
         data:{
