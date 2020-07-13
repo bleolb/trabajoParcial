@@ -37,8 +37,7 @@ login():void{
     this.loginServices.login(datalogin).subscribe((data:Datarx)=>{
   if(data.transaccion){
     if(this.permisos.decodificarToken(data.token)){
-      sessionStorage.setItem('rol', JSON.stringify(data.data));
-      this.router.navigate(['/home']);
+    this.router.navigate(['/home']);
     }else{
      email='';
       password='';

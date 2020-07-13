@@ -29,7 +29,7 @@ const routes: Routes = [
     
     {
         path: 'menu',loadChildren:()=>
-        import('./menu-usarios/menu.module')
+        import('./menusarios/menu.module')
         .then((m)=>m.MenuModule)},
     {
         path: 'usuarios-nuevo',loadChildren:()=>
