@@ -6,10 +6,11 @@ const express = require('express'),
     autenticacioncontrol = require('../auntentica/autenticacion');
 let api = express.Router(),
     usuarioControl = require('../controller/usuarios.controller'),
-    galeriaMiddLeware = multiParty({ uploadDir: './files/galeria' });
+    galeriaMiddLeware = multiParty({ uploadDir: './files/galeria' }),
+    midlewareDate = require('../middleware/middleware');
     // rolControl = require('../auntentica/rol');
 
-api.get('/get_usuarios', autenticacioncontrol.autentificar, usuarioControl.getUsuario)
+api.get('/get_usuarios', midlewareDate ,autenticacioncontrol.autentificar, usuarioControl.getUsuario)
 
 api.post('/insert_usuario', usuarioControl.insertOne)
 api.put('/update/:id', autenticacioncontrol.autentificar, usuarioControl.updateOne)
